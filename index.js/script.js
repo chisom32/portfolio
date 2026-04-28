@@ -143,26 +143,42 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------
   // 6. CONTACT FORM — BASIC FEEDBACK
   // ------------------------------------------
-  const contactForm = document.querySelector('.contact-form');
+  const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        const btn = contactForm.querySelector('button[type="submit"]');
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
 
-        // Show success message after submission
-        setTimeout(() => {
-            contactForm.innerHTML = `
-                <div style="text-align:center; padding: 30px;">
-                    <h3 style="color: green; margin-bottom: 10px;">✅ Message Sent!</h3>
-                    <p>Thanks for reaching out. I'll get back to you soon.</p>
-                </div>
-            `;
-        }, 2000);
-    });
+    const data = new FormData(contactForm);
+
+    try {
+      const res = await fetch('https://formspree.io/f/xqewglyz', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        contactForm.innerHTML = `
+          <div style="text-align:center; padding:30px 0;">
+            <h3 style="color:green; margin-bottom:10px;">✅ Message Sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you soon.</p>
+          </div>
+        `;
+      } else {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Network error. Please try again.');
+    }
+  });
 }
-
-
   // ------------------------------------------
   // 7. NAVBAR — SHRINK ON SCROLL
   // ------------------------------------------
