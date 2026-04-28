@@ -1,0 +1,33 @@
+body {
+    padding: 20px;
+}
+.about-t {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.about-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+@media(min-width: 768px){
+    .about-main {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
+
+.about {
+    padding-top: 50px;
+    margin-bottom: 70px;
+    /* max-width: 1000px; */
+}
+.about-image {
+    border-radius: 12px;
+    margin-right: 8px;
+    margin-left: 50px;
+    width: 300px;
+}
