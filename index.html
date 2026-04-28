@@ -25,6 +25,11 @@
     <meta name="twitter:title" content="Drills — Web Developer & UX Designer" />
     <meta name="twitter:description" content="Building clean, responsive websites and web apps that solve real problems." />
     <meta name="twitter:image" content="https://yourportfolio.vercel.app/blur.png" />
+
+    <link rel="preload" href="index.js/script.js" as="script">
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     
 </head>
 <body>
@@ -357,11 +362,11 @@
  
       <!-- Contact Form -->
       <form class="contact-form" action="https://formspree.io/f/xqewglyz" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-        <input type="hidden" name="_next" value="http://127.0.0.1:3000/index.html?vscode-livepreview=true" />
+          <input type="hidden" name="_next" value="https://drills-portfolio.vercel.app/#contact" />
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+         <button type="submit">Send Message</button>
       </form>
     </div>
   </div>
